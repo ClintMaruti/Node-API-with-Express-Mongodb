@@ -4,8 +4,12 @@ const Post = require('../models/Post');
 
 // GET all posts
 router.get('/api/v1/post/', async (req,res) => {
-    const posts = await Post.find();
-    res.json(posts);
+    try {
+        const posts = await Post.find();
+        res.json(posts);
+    } catch (err) {
+        res.json({message: err});
+    }
 });
 
 // SUBMIT A POST
