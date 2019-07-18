@@ -4,11 +4,17 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv/config');
 
+app.use(bodyParser.json());
 
 // Test route
 app.get('/', (req,res) => {
     res.send('Hey there!!!');
 });
+
+// ROUTES - posts
+const postsRoutes = require('./routes/posts');
+app.use('/posts', postsRoutes);
+
 
 // Connect to Mongodb
 mongoose.connect(
