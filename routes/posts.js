@@ -3,13 +3,13 @@ const router = express.Router();
 const Post = require('../models/Post');
 
 // GET all posts
-router.get('/api/v1/posts', async (req,res) => {
+router.get('/api/v1/post/', async (req,res) => {
     const posts = await Post.find();
     res.json(posts);
 });
 
 // SUBMIT A POST
-router.post('api/v1/post/', async (req,res) => {
+router.post('/api/v1/post/', async (req,res) => {
     try{
         const post = await new Post({
             title: req.body.title,
@@ -24,7 +24,7 @@ router.post('api/v1/post/', async (req,res) => {
 });
 
 // GET A SPECIFIC POST
-router.get('api/v1/post/:postId', async (req,res) => {
+router.get('/api/v1/post/:postId', async (req,res) => {
     try{
         const specificPost = await Post.findById(req.params.postId);
         res.json(specificPost);
@@ -34,7 +34,7 @@ router.get('api/v1/post/:postId', async (req,res) => {
 });
 
 // UPDATE A POST
-router.patch('api/v1/post/:postId', async (req,res) => {
+router.patch('/api/v1/post/:postId', async (req,res) => {
     try {
         const updatePost = await Post.updateOne(
             {_id: req.params.postId},
@@ -47,7 +47,7 @@ router.patch('api/v1/post/:postId', async (req,res) => {
 });
 
 // DELETE A POST
-router.delete('api/v1/post/:postId', async (req,res) => {
+router.delete('/api/v1/post/:postId', async (req,res) => {
     try {
         const deletePost = await Post.remove(req.params.postId);
         res.json(deletePost);

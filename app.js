@@ -13,7 +13,7 @@ app.get('/', (req,res) => {
 
 // ROUTES - posts
 const postsRoutes = require('./routes/posts');
-app.use('/posts', postsRoutes);
+app.use(postsRoutes);
 
 
 // Connect to Mongodb
